@@ -6,3 +6,9 @@ module.exports = {
 };
 
 const User = require('./models/user_model.js');
+const Outfit = require('./models/outfit_model.js');
+
+sequelize.sync()
+.then(()=>{
+    console.log("DB Models Created")
+});
