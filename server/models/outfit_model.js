@@ -1,7 +1,7 @@
 const Sequelize = require('../database.js').Sequelize;
-const sequelize = require('../database.js').sequelize;
+const database = require('../database.js').database;
 
-const Outfit = sequelize.define('outfit', {
+const Outfit = database.define('outfit', {
     top: {
         type: Sequelize.STRING
     },
