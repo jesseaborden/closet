@@ -1,6 +1,13 @@
 const authenticationController = {};
 const User = require('../models/user_model');
 const bcrypt = require('bcrypt-nodejs');
+const jwt = require('jwt-simple');
+const config = require('../../config.js')
+
+const tokenForUser = function(user){
+    const timeStamp = new Date().getTime();
+    return jwt.encode({ sub: user.id, iat: timeStamp }, config.secret);
+}
 
 authenticationController.signup = function(req, res, next){
     const email = req.body.email;
@@ -27,7 +34,7 @@ authenticationController.signup = function(req, res, next){
                 email: email,
                 password: password
             }).then(function(response){
-                res.send(response);
+                res.json({token: tokenForUser(response)});
             });
         }
     }).catch(function(err){
