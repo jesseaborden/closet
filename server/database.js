@@ -8,7 +8,7 @@ module.exports = {
 const User = require('./models/user_model.js');
 const Outfit = require('./models/outfit_model.js');
 
-database.sync({})
+database.sync({force:true})
 .then(()=>{
     console.log("DB Models Created")
 });
