@@ -41,4 +41,8 @@ authenticationController.signup = function(req, res, next){
     });
 }
 
+authenticationController.signIn = function(req, res, next){
+    res.send({ token: tokenForUser(req.user) })
+}
+
 module.exports = authenticationController;
