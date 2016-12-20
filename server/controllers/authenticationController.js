@@ -12,7 +12,6 @@ const tokenForUser = function(user){
 authenticationController.signup = function(req, res, next){
     const email = req.body.email;
     let password = req.body.password;
-    console.log("e and p", email, password)
 
     if(!password || !email) return res.status(422).send( {error: "valid email and password are required"} );
 
