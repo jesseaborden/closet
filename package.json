@@ -7,11 +7,11 @@
     "react-scripts": "0.8.4"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "jwt-simple": "^0.5.1",
-    "morgan": "^1.7.0",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
@@ -23,6 +23,7 @@
     "react-redux": "^5.0.1",
     "redux": "^3.6.0",
     "redux-form": "^6.3.2",
+    "redux-thunk": "^2.1.0",
     "sequelize": "^3.27.0"
   },
   "scripts": {
