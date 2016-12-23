@@ -8,6 +8,17 @@ class Signin extends Component {
         console.log(this);
         this.props.signinUser({email, password});
     }
+
+    renderAlert(){
+        if(this.props.errorMessage){
+            return (
+                <div>
+                    <p>Uh oh! {this.props.errorMessage}</p>
+                </div>
+            );
+        }
+    }
+
     render() {
 
         const { handleSubmit } = this.props;
@@ -20,8 +31,9 @@ class Signin extends Component {
                 </fieldset>
                 <fieldset>
                     <label>Password:</label>
-                    <Field  name="password" component={"input"} />
+                    <Field  name="password" component={"input"} type="password" />
                 </fieldset>
+                {this.renderAlert()}
                 <button action="submit">Submit</button>
             </form>
         );
@@ -30,7 +42,7 @@ class Signin extends Component {
 
 function mapStateToProps(state) {
     return {
-        auth: state.auth.error
+        errorMessage: state.auth.error
     }
 }
 
@@ -38,5 +50,5 @@ Signin = reduxForm({
     form: 'signin'
 })(Signin);
 
-export default Signin = connect(null, { signinUser })(Signin)
+export default Signin = connect(mapStateToProps, { signinUser })(Signin)
 
