@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { signupUser } from '../actions';
 import { reduxForm, Field } from 'redux-form';
 
 
 class Signup extends Component {
     
+    handleFormSubmit(formProps){
+        console.log(formProps);
+        this.props.signupUser(formProps)
+
+    }
 
     render(){
 
     const { handleSubmit } = this.props;
 
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={ handleSubmit(this.handleFormSubmit.bind(this)) }>
                 <div>
                     <Field name="email" component={renderField} />
                     <Field name="password" component={renderField} type="password" />
@@ -49,9 +56,9 @@ function renderField ({ input, type, meta: { touched, error} }) {
 	)
 }
 
-const myForm = reduxForm({
+Signup = reduxForm({
     form:'signup',
     validate
 })(Signup);
 
-export default myForm ;
+export default connect(null, { signupUser })(Signup);

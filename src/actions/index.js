@@ -22,6 +22,22 @@ export function signinUser ({email, password}){
     }
 }
 
+export function signupUser ({email, password}){
+    return function(dispatch){
+        axios.post(`${ROOT_URL}/api/authentication/signup`, {email, password})
+        .then(response => {
+            console.log("inside signup")
+            dispatch({ type: AUTH_USER });
+            localStorage.setItem('token', response.data.token);
+            browserHistory.push('/feature');
+        })
+        .catch(() => {
+            console.log("inside catch");
+            dispatch(authError("Incorrect login details"));
+        })
+    }
+}
+
 export function authError(error){
     return {
         type: AUTH_ERROR,
