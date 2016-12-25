@@ -31,9 +31,8 @@ export function signupUser ({email, password}){
             localStorage.setItem('token', response.data.token);
             browserHistory.push('/feature');
         })
-        .catch(() => {
-            console.log("inside catch");
-            dispatch(authError("Incorrect login details"));
+        .catch((error) => {
+            dispatch(authError(error.response.data.error))
         })
     }
 }

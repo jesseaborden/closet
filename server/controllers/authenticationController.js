@@ -26,7 +26,7 @@ authenticationController.signup = function(req, res, next){
     User.findOne({where: {email: email}}) 
     .then(function(emailFound){
         if(emailFound){
-            res.status(422).send( {error: "email is in use"} );
+            res.status(422).send( {error: "Email is in use"} );
         }
         else {
             User.create({

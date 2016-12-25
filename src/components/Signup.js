@@ -12,6 +12,17 @@ class Signup extends Component {
 
     }
 
+    renderAlert(){
+        if(this.props.errorMessage){
+            return (
+                <div>
+                    <p>Uh oh! {this.props.errorMessage}</p>
+                </div>
+            );
+        }
+    }
+
+
     render(){
 
     const { handleSubmit } = this.props;
@@ -23,6 +34,7 @@ class Signup extends Component {
                     <Field name="password" component={renderField} type="password" />
                     <Field name="passwordConfirm" component={"input"} type="password" />
                 </div> 
+                {this.renderAlert()}
                 <button type="submit"></button>
             </form>
         )
@@ -56,9 +68,15 @@ function renderField ({ input, type, meta: { touched, error} }) {
 	)
 }
 
+function mapStateToProps(state) {
+    return {
+        errorMessage: state.auth.error
+    }
+}
+
 Signup = reduxForm({
     form:'signup',
     validate
 })(Signup);
 
-export default connect(null, { signupUser })(Signup);
+export default connect(mapStateToProps, { signupUser })(Signup);
