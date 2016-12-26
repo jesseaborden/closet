@@ -5,6 +5,7 @@ import App from './App';
 import Signin from './components/Signin';
 import Signout from './components/Signout';
 import Signup from './components/Signup';
+import UserDash from './components/UserDash';
 
 const Routes = () => (
     <Router history={browserHistory}>
@@ -12,7 +13,7 @@ const Routes = () => (
         <Route path='/signin' component={Signin} />
         <Route path='/signout' component={Signout} />
         <Route path='/signup' component={Signup} />
-
+        <Route path='/dashboard' component={UserDash} />
       </ Route>
     </Router>
     )

@@ -13,7 +13,7 @@ export function signinUser ({email, password}){
 
             dispatch({ type: AUTH_USER });
             localStorage.setItem('token', response.data.token);
-            browserHistory.push('/feature');
+            browserHistory.push('/dashboard');
         })
         .catch(() => {
             console.log("inside catch");
@@ -29,7 +29,7 @@ export function signupUser ({email, password}){
             console.log("inside signup")
             dispatch({ type: AUTH_USER });
             localStorage.setItem('token', response.data.token);
-            browserHistory.push('/feature');
+            browserHistory.push('/dashboard');
         })
         .catch((error) => {
             dispatch(authError(error.response.data.error))
